@@ -1,0 +1,22 @@
+name: WebGoat Workflow
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Java 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Run Synopsys Detect
+      uses: synopsys-sig/detect-action@v0.3.0
+      with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          detect-version: 9.0.0
+          blackduck-url: https://expressonboarding.app.blackduck.com
+          blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
