@@ -25,6 +25,9 @@ jobs:
         
 #            - name: Black Duck Intelligent Scan
 #              uses: synopsys-sig/detect-action@v0.3.4
+#              env:
+#                  detect_blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
+#                  detect_tools: DETECTOR    
 #              with:
 #                  scan-mode: INTELLIGENT 
 #                  github-token: ${{ secrets.GITHUB_TOKEN }}
