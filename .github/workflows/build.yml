@@ -29,9 +29,12 @@ jobs:
                     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
                     restore-keys: ${{ runner.os }}-m2-
             - name: Build with Maven
-              run: mvn --no-transfer-progress verify
-            - name: Run Synopsys Detect
-              uses: synopsys-sig/synopsys-action@v1.8.0
+              run: mvn --no-transfer-progress verify           
+            - name: Detect Rapid Scan Action
+              uses: synopsys-sig/detect-action@v0.3.4
               with:
-                  blackduck_url: ${{ secrets.BLACKDUCK_URL }}
-                  blackduck_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+                  scan-mode: INTELLIGENT 
+                  #github-token: ${{ secrets.GITHUB_TOKEN }}
+                  detect-version: 9.0.0
+                  blackduck-url: ${{ secrets.BLACKDUCK_URL }}
+                  blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
