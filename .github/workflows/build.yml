@@ -41,6 +41,8 @@ jobs:
                   
             - name: Black Duck RAPID Scan
               uses: synopsys-sig/detect-action@v0.3.4
+              env:
+                  detect_blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
               with:
                   scan-mode: RAPID 
                   github-token: ${{ secrets.GITHUB_TOKEN }}
