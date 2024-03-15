@@ -43,8 +43,9 @@ jobs:
               uses: synopsys-sig/detect-action@v0.3.4
               env:
                   detect_blackduck_rapid_compare_mode: BOM_COMPARE_STRICT
+                  detect_blackduck_scan_mode: STATELESS
               with:
-                  scan-mode: RAPID 
+                  scan-mode: RAPID
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   detect-version: 9.0.0
                   blackduck-url: ${{ secrets.BLACKDUCK_URL }}
