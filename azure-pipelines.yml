@@ -1,0 +1,34 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: SynopsysSecurityScan@1
+  displayName: SCA Package Manager Scan
+  inputs:
+    scanType: 'polaris'
+    bridge_polaris_serverUrl: '$(polarisurl)'
+    bridge_polaris_accessToken: '$(polaris_eo_token)'
+    bridge_polaris_application_name: 'AndroidApp'
+    bridge_polaris_project_name: 'CI-WebGoat2.0'
+    bridge_polaris_assessment_types: 'SCA'
+    bridge_polaris_branch_name: 'main'
+    polarisTestScaType: 'SCA-Package'
+- task: SynopsysSecurityScan@1
+  displayName: SCA Signature Scan
+  inputs:
+    scanType: 'polaris'
+    bridge_polaris_serverUrl: '$(polarisurl)'
+    bridge_polaris_accessToken: '$(polaris_eo_token)'
+    bridge_polaris_application_name: 'AndroidApp'
+    bridge_polaris_project_name: 'CI-WebGoat2.0'
+    bridge_polaris_assessment_types: 'SCA'
+    bridge_polaris_branch_name: 'main'
+    polarisTestScaType: 'SCA-Signature'
