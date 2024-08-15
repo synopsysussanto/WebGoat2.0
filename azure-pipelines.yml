@@ -10,6 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+  displayName: 'Checkout WebGoat from GitHub'
 - task: SynopsysSecurityScan@1
   displayName: SCA Package Manager Scan
   inputs:
